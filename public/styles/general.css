@@ -90,6 +90,7 @@ body {
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
   /* background-color: #fdf2e9; */
 }
 
@@ -188,8 +189,8 @@ body {
 .btn--form {
   background-color: #45260a;
   color: #fdf2e9;
-  align-self: end;
   padding: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .btn--form:hover {
