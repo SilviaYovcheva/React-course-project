@@ -73,12 +73,20 @@ html {
 }
 
 body {
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
+  margin: 0;
   font-family: "Rubik", sans-serif;
   line-height: 1;
   font-weight: 400;
   color: #555;
   /* overflow-x: hidden; */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /******************************/
@@ -91,7 +99,7 @@ body {
   margin: 0 auto;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
-  /* background-color: #fdf2e9; */
+  flex: 1 0 auto;
 }
 
 .grid {
@@ -187,9 +195,10 @@ body {
 }
 
 .btn--form {
+  display: inline-block;
   background-color: #45260a;
   color: #fdf2e9;
-  padding: 1.2rem;
+  padding: 1.2rem 2.4rem;
   margin-top: 1.5rem;
 }
 

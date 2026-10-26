@@ -1,6 +1,7 @@
 .sectionHero {
   background-color: #fdf2e9;
   padding: 3rem 4.5rem;
+  flex: 1 0 auto;
 }
 
 .hero {
@@ -26,38 +27,6 @@
 
 .heroImg {
   width: 100%;
-}
-
-.deliveredMeals {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  margin-top: 8rem;
-}
-
-.deliveredImgs {
-  display: flex;
-}
-
-.deliveredImgs img {
-  height: 4.8rem;
-  width: 4.8rem;
-  border-radius: 50%;
-  margin-right: -1.6rem;
-  border: 3px solid #fdf2e9;
-}
-
-.deliveredImgs img:last-child {
-  margin-right: 0;
-}
-
-.deliveredText {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.deliveredText span {
-  color: #cf711f;
 }
 
 .heroImgBox {
