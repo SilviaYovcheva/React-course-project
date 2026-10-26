@@ -1,0 +1,157 @@
+.registerContainer {
+  margin: 0 auto;
+  width: 30%;
+  padding-top: 4.2rem;
+  padding-bottom: 3.2rem;
+  flex: 1 0 auto;
+}
+
+.registerForm {
+  margin: 0 auto;
+  border: black;
+  background: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 10%);
+  padding: 4rem;
+}
+
+.legend {
+  font-size: 26px;
+  color: #cf711f;
+  padding-top: 3rem;
+  margin-bottom: 4rem;
+  /* text-align: center; */
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+
+  legend {
+    font-size: 1.6rem;
+    font-weight: bold;
+
+    &::after {
+      display: block;
+      content: "";
+      background-color: #ccc;
+      width: 100%;
+      height: 2px;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.field {
+  --clr-error: #c00;
+  --clr-success: #060;
+
+  --clr-border: #ccc;
+  --clr-input-text: #333;
+  --clr-label-text: #333;
+
+  padding-bottom: 1.5em;
+
+   label {
+    font-weight: bold;
+    display: block;
+    color: var(--clr-label-text);
+    margin-bottom: 0.5rem;
+  }
+
+  & input[type="text"],
+  & input[type="email"],
+  & input[type="password"],
+  & textarea {
+    border: 2px solid var(--clr-border);
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.3rem;
+    display: block;
+    width: 100%;
+    outline: none;
+    color: var(--clr-input-text);
+
+    &:focus {
+      --clr-border: #cf711f;
+    }
+  }
+
+  &:has(:required) > label {
+    &::after {
+      display: inline-block;
+      content: "*";
+      margin-left: 0.2em;
+      color: var(--clr-error);
+    }
+  }
+
+  .info {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  &:has(:user-invalid) {
+    --clr-label-text: var(--clr-error);
+    --clr-border: var(--clr-error);
+  }
+
+  &:has(:user-valid) {
+    --clr-label-text: var(--clr-success);
+    --clr-border: var(--clr-success);
+  }
+} 
+
+button,
+input[type="button"],
+input[type="submit"] {
+  font-size: 18px;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  padding: 1.2rem 6rem;
+  background: #e67e22;
+  border-radius: 0.3rem;
+  color: #fff;
+  outline: none;
+  margin-top: 4rem;
+
+  &:focus {
+    background: #cf711f;
+  }
+}
+
+form input,
+button {
+  &:focus-visible {
+    outline: 1px solid #cf711f;
+    outline-offset: 1px;
+  }
+}
+
+button:hover,
+button:active {
+  background-color: #cf711f;
+}
+
+.loginInfo {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.loginLink:link,
+.loginLink:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #e67e22;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.loginLink:hover,
+.loginLink:active {
+  color: #cf711f;
+}

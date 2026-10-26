@@ -1,17 +1,17 @@
 import { Link } from "react-router";
-import Logo from './book.png'
+import Logo from "./book.png";
 import styles from "./header.styles.module.css";
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext";
 
 export default function Header() {
+  const authContext = useContext(AuthContext);
+
   return (
     <section className={styles.headerNav}>
       <header className={styles.header}>
         <Link to="/">
-          <img
-            src={Logo}
-            alt="BookNest logo"
-            className={styles.logo}
-          />
+          <img src={Logo} alt="BookNest logo" className={styles.logo} />
         </Link>
 
         <nav className={styles.mainNav}>
@@ -26,24 +26,30 @@ export default function Header() {
                 All Books
               </Link>
             </li>
-            <li>
-              <Link className={styles.mainNavLink} to="/login">
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link className={styles.mainNavLink} to="/register">
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${styles.mainNavLink} ${styles.navCta}`}
-                to="#cta"
-              >
-                About
-              </Link>
-            </li>
+            {!authContext.isAuthenticated && (
+              <li>
+                <Link className={styles.mainNavLink} to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
+            {!authContext.isAuthenticated && (
+              <li>
+                <Link className={styles.mainNavLink} to="/register">
+                  Register
+                </Link>
+              </li>
+            )}
+            {authContext.isAuthenticated && (
+              <li>
+                <Link
+                  className={`${styles.mainNavLink} ${styles.navCta}`}
+                  to="/books/create"
+                >
+                  Create Book
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 
