@@ -8,6 +8,7 @@ import BookDetails from "./Components/bookDetails/BookDetails";
 import Login from "./Components/Login/Login";
 import Register from "./Components/register/Register";
 import { AuthProvider } from "./contexts/authContext";
+import Logout from "./Components/logout/Logout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/books/:bookId" element={<BookDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
         <ToastContainer />
         <Footer />

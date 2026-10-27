@@ -50,13 +50,15 @@ export default function Header() {
                 </Link>
               </li>
             )}
+            {authContext.isAuthenticated && (
+              <li>
+                <Link className={`${styles.mainNavLink}`} to="/logout">
+                  Logout
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
-
-        <button className={styles.btnMobileNav}>
-          <ion-icon className={styles.iconMobileNav} name="menu-outline" />
-          <ion-icon className={styles.iconMobileNav} name="close-outline" />
-        </button>
       </header>
     </section>
   );
