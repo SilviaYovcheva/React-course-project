@@ -7,6 +7,8 @@ import Books from "./Components/books/Books";
 import BookDetails from "./Components/bookDetails/BookDetails";
 import Login from "./Components/Login/Login";
 import Register from "./Components/register/Register";
+import EditBook from "./Components/editBook/EditBook";
+import CreateBook from "./Components/createBook/CreateBook";
 import { AuthProvider } from "./contexts/authContext";
 import Logout from "./Components/logout/Logout";
 
@@ -19,6 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<Books />} />
           <Route path="/books/:bookId" element={<BookDetails />} />
+          <Route path="/books/:bookId/edit" element={<EditBook />} />
+          <Route path="/books/create" element={<CreateBook />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />

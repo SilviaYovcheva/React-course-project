@@ -6,9 +6,11 @@ export default function Books() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    request(`/books?order=created_at.desc`).then((result) => {
-      setBooks(result);
-    });
+    request({ path: `/books?order=created_at.desc`, method: "GET" }).then(
+      (result) => {
+        setBooks(result);
+      },
+    );
   }, []);
 
   return (

@@ -1,0 +1,40 @@
+.createWrapper {
+    flex: 1 0 auto
+}
+.createContainer {
+  width: 30%;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 11px;
+  overflow: hidden;
+  transition: all 0.4s;
+  padding: 3rem;
+  margin: 5rem auto;
+  border-radius: 11px;
+  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+    
+    img {
+        height: 40rem;
+        border-radius: 5px;
+    }
+
+    .createForm{        
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+        input,
+        select {
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 100%;
+        }
+    }
+}
+
+.formData {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
