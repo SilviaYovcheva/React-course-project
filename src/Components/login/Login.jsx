@@ -1,18 +1,54 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { toast } from "react-toastify";
 import AuthContext from "../../contexts/authContext";
 import { authRequest } from "../../utils/request";
 import styles from "./login.styles.module.css";
 
+function validate(values) {
+  let errors = {};
+
+  if (!values.email) {
+    errors["email"] = "Email is required!";
+  }
+
+  if (!values.password) {
+    errors["password"] = "Password is required!";
+  }
+
+  if (values.password && values.password.length < 6) {
+    errors["password"] = "Password should be at least 6 characters long!";
+  }
+
+  return errors;
+}
+
 export default function Login() {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = async (formData) => {
-    const { email, password } = Object.fromEntries(formData);
-    if (!email || !password) {
-      toast.error("Email and password are required");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = formData;
+    const errors = validate({ email, password });
+    setErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
       return;
     }
 
@@ -33,14 +69,23 @@ export default function Login() {
 
   return (
     <section className={styles.loginContainer}>
-      <form className={styles.loginForm} action={handleSubmit}>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Login</legend>
 
           <p className={styles.field}>
             <label htmlFor="login-email">Email</label>
-            <input type="email" name="email" id="login-email" required />
-            <span className={styles.info}>Example: john@gmail.com</span>
+            <input
+              type="email"
+              name="email"
+              id="login-email"
+              // required
+              className={`${styles.inputField} ${errors["email"] ? styles.inputFieldError : ""}`}
+              onChange={handleChange}
+            />
+            {errors["email"] && (
+              <span className={styles.errorLabel}>{errors["email"]}</span>
+            )}
           </p>
 
           <p className={styles.field}>
@@ -49,9 +94,13 @@ export default function Login() {
               type="password"
               name="password"
               id="login-password"
-              required
+              // required
+              className={`${styles.inputField} ${errors["password"] ? styles.inputFieldError : ""}`}
+              onChange={handleChange}
             />
-            <span className={styles.info}>Minimum 6 characters</span>
+            {errors["password"] && (
+              <span className={styles.errorLabel}>{errors["password"]}</span>
+            )}
           </p>
 
           <button type="submit">Login</button>
