@@ -53,37 +53,11 @@ fieldset {
 
   padding-bottom: 1.5em;
 
-   label {
+  label {
     font-weight: bold;
     display: block;
     color: var(--clr-label-text);
     margin-bottom: 0.5rem;
-  }
-
-  & input[type="text"],
-  & input[type="email"],
-  & input[type="password"],
-  & textarea {
-    border: 2px solid var(--clr-border);
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.3rem;
-    display: block;
-    width: 100%;
-    outline: none;
-    color: var(--clr-input-text);
-
-    &:focus {
-      --clr-border: #cf711f;
-    }
-  }
-
-  &:has(:required) > label {
-    &::after {
-      display: inline-block;
-      content: "*";
-      margin-left: 0.2em;
-      color: var(--clr-error);
-    }
   }
 
   .info {
@@ -91,17 +65,23 @@ fieldset {
     font-style: italic;
     opacity: 0.6;
   }
+}
 
-  &:has(:user-invalid) {
-    --clr-label-text: var(--clr-error);
-    --clr-border: var(--clr-error);
-  }
-
-  &:has(:user-valid) {
-    --clr-label-text: var(--clr-success);
-    --clr-border: var(--clr-success);
-  }
-} 
+.inputField {
+  border: 2px solid #cf711f;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+  display: block;
+  width: 100%;
+  outline: none;
+  color: #333;
+}
+.inputFieldError {
+  border: 2px solid #c00;
+}
+.errorLabel {
+  color: #c00;
+}
 
 button,
 input[type="button"],
@@ -116,18 +96,6 @@ input[type="submit"] {
   color: #fff;
   outline: none;
   margin-top: 4rem;
-
-  &:focus {
-    background: #cf711f;
-  }
-}
-
-form input,
-button {
-  &:focus-visible {
-    outline: 1px solid #cf711f;
-    outline-offset: 1px;
-  }
 }
 
 button:hover,
